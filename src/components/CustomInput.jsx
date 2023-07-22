@@ -1,4 +1,4 @@
-function CustomInput({ value, setValue, emoji, label, type }) {
+function CustomInput({ value, setValue, emoji, label, type, disabled }) {
   return (
     <>
       <div className="friend-name flex w-full h-[40px] py-[8px] justify-between items-center">
@@ -9,7 +9,7 @@ function CustomInput({ value, setValue, emoji, label, type }) {
               <option value="You">You</option>
               <option value="Sæva">Sæva</option>
             </select> :
-            <input value={value} onChange={(e) => setValue(e.target.value)} className="form-input focus:outline-none focus:border focus:border-cyan-400 box-border" id="name" type="text" />
+            <input disabled={disabled} value={value} onChange={(e) => setValue(e.target.value)} className="form-input focus:outline-none focus:border focus:border-cyan-400 box-border text-center" id="name" type="text" />
           }
       </div>
     </>

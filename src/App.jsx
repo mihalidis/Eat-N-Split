@@ -14,11 +14,34 @@ function App() {
       setSelectedUser(user);
     }
   }
+  
+  const handleBillPayment = (obj) => {
+    let info = ''
+    let color = 'black';
+
+    if (obj.whoPayTheBill === 'You' && parseInt(obj.yourExpanse) !== parseInt(obj.friendExpanse)) {
+      info = `${selectedUser.name} owes you ${obj.friendExpanse}`;
+      color = '#00DFA2';
+    } else if (parseInt(obj.yourExpanse) === parseInt(obj.friendExpanse)) {
+      info = `You and ${selectedUser.name} are even`;
+    } else {
+      info = `You owe ${selectedUser.name} ${obj.yourExpanse}`;
+      color = '#FF0060';
+    }
+
+    const updatedUsers = users.map(user => {
+      if (user.id === obj.id) {
+        return { ...user, info, color };
+      }
+      return user;
+    });
+    setUsers(updatedUsers);
+  }
 
   return (
     <>
       <Users users={users} setUsers={setUsers} selectedUser={selectedUser} setSelectedUser={handleSetSelectedUser} />
-      <CalculateBill selectedUser={selectedUser} />
+      {selectedUser && <CalculateBill selectedUser={selectedUser} handleBillPayment={handleBillPayment} />}
     </>
   )
 }

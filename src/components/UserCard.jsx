@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 function UserCard({ user, setSelectedUser, select }) {
   const buttonColor = select ? 'bg-teal-300' : 'bg-teal-200';
 
@@ -10,7 +8,7 @@ function UserCard({ user, setSelectedUser, select }) {
         <div className="user-card__info-wrapper w-full flex justify-between items-center">
           <div className="user-card__info flex flex-col items-start">
             <span className="font-bold">{user.name}</span>
-            <span>You owe Sævar 20€</span>
+            <span className="font-bold" style={user.color ? { color: user.color } : { color: 'black' }}>{user.info}</span>
           </div>
           <button onClick={() => setSelectedUser(user)} className={`user-card__button w-[95px] flex items-center justify-center ${buttonColor} px-[16px] py-[8px] rounded-[6px] h-[30px] text-white font-bold`}>
             {select ? 'CLOSE' : 'SELECT'}

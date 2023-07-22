@@ -10,7 +10,8 @@ function AddUser({ setUsers }) {
     setUsers(prev => [...prev, {
       id: generateRandomId(5),
       name: userName,
-      img: imageURL
+      img: imageURL,
+      info: ''
     }]);
   };
 
