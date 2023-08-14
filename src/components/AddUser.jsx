@@ -1,6 +1,6 @@
 import { useState } from "react"
 import CustomInput from "./CustomInput"
-import { generateRandomId } from "../helper";
+import { v4 as uuidv4 } from 'uuid';
 
 function AddUser({ setUsers }) {
   const [userName, setUserName] = useState('');
@@ -8,7 +8,7 @@ function AddUser({ setUsers }) {
 
   const handleAddUser = () => {
     setUsers(prev => [...prev, {
-      id: generateRandomId(5),
+      id: uuidv4(),
       name: userName,
       img: imageURL,
       info: ''

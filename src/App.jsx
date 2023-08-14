@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <Users users={users} setUsers={setUsers} selectedUser={selectedUser} setSelectedUser={handleSetSelectedUser} />
-      {selectedUser && <CalculateBill selectedUser={selectedUser} handleBillPayment={handleBillPayment} />}
+      {selectedUser && <CalculateBill selectedUser={selectedUser} handleBillPayment={handleBillPayment} key={selectedUser.id} />}
     </>
   )
 }
